@@ -44,6 +44,11 @@ class _ScreenManagerState extends State<ScreenManager> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        initialRoute: "/",
+        routes: {
+          '/addContact': (context) => const AddContact(),
+          '/allContacts': (context) => AllContacts()
+        },
         home:  Scaffold(
             body: _getPage(_selectedIndex),
             appBar: AppBar(
