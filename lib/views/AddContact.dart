@@ -1,11 +1,15 @@
 import 'package:contact_management_system/commonWidgets/customTextField.dart';
+import 'package:contact_management_system/views/AllContacts.dart';
+import 'package:contact_management_system/views/screenManager.dart';
 import 'package:contact_management_system/widgetGenerators/apiCalls.dart';
 import 'package:flutter/material.dart';
 
 class AddContact extends StatefulWidget {
   final String? pid;
+  final String? name;
+  final String? contact;
 
-  const AddContact({Key? key, this.pid}) : super(key: key);
+  const AddContact({Key? key, this.pid, this.name, this.contact}) : super(key: key);
 
   @override
   State<AddContact> createState() => _AddContactState();
@@ -19,20 +23,11 @@ class _AddContactState extends State<AddContact> {
   @override
   void initState() {
     // TODO: implement initState
-    // print(widget.pid);
     if (widget.pid != null){
-      APICalls().getOneContact(contID: widget.pid).then(
-        (value) {
-          _name.text = value['pname'];
-          _number.text = value['pphone'];
-          setState(() {
-            loadScreen = _buildScreen();
-          });
-      });
+      _name.text = widget.name!;
+      _number.text = widget.contact!;
     }
-    else {
-      loadScreen = _buildScreen();
-    }
+
     super.initState();
   }
 
@@ -45,12 +40,13 @@ class _AddContactState extends State<AddContact> {
           title: const Text("Edit Contact"),
           centerTitle: true,
         ) : null,
-        body: loadScreen
+        body: _buildScreen()
       ),
     );
   }
 
   Widget _buildScreen(){
+
     return Scaffold(
       body:Column(
         children: [
@@ -61,7 +57,8 @@ class _AddContactState extends State<AddContact> {
           const SizedBox(height: 15,),
           CustomTextField(
               hintText: "Enter Your Phone Number",
-              controller: _number
+              controller: _number,
+              isNumber: true,
           ),
         ],
       ),
@@ -78,7 +75,10 @@ class _AddContactState extends State<AddContact> {
                   unumber: _number.text
                 ).then((value) {
                   setState(() {
-                    Navigator.pushNamed(context, "/");
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ScreenManager())
+                    );
                   });
                 });
               }
@@ -89,7 +89,10 @@ class _AddContactState extends State<AddContact> {
                     unumber: _number.text
                 ).then((value) {
                   setState(() {
-                    Navigator.pushNamed(context, "/");
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ScreenManager())
+                    );
                   });
                 });
               }

@@ -52,6 +52,7 @@ class _ScreenManagerState extends State<ScreenManager> {
         home:  Scaffold(
             body: _getPage(_selectedIndex),
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               backgroundColor: Colors.pink,
               elevation: 1,
               title: Text(_title,),

@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
+  final bool? isNumber;
 
   const CustomTextField({
     Key? key,
+    this.isNumber,
     required this.controller,
     required this.hintText
+
   }) : super(key: key);
 
   @override
@@ -25,6 +28,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
           onChanged: (value) {
             setState(() {});
           },
+          maxLength: widget.isNumber == true ? 10 : null,
+          keyboardType: widget.isNumber == true ? TextInputType.number : null,
           controller: widget.controller,
           decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
