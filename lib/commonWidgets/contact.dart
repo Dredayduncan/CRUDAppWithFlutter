@@ -1,3 +1,4 @@
+import 'package:contact_management_system/views/screenManager.dart';
 import 'package:contact_management_system/views/viewRecord.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -59,7 +60,7 @@ class Contact extends StatelessWidget {
                         onPressed: () {
                           APICalls().deleteContact(ppid: pid).then(
                                   (value) => {
-                                Navigator.pushNamed(context, "/")
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenManager()))
                               });
                         },
                         child: const Text('Yes'),
