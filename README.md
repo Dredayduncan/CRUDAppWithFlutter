@@ -1,16 +1,9 @@
-# contact_management_system
+# Contact Management System
 
-A new Flutter project.
+A simple mobile application to demonstrate integration with an API.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Functional Requirements
+- Users can add a contact by providing a name and contact of the contact
+- Users can view all contacts
+- Users can update the information (name and number) of a selected contact
+- Users can delete a contact
